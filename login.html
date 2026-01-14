@@ -2,16 +2,15 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Giriş Yap | ShawtyStory</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giriş / Kayıt | ShawtyStory</title>
 <style>
 body{background:#111;color:#fff;font-family:Arial}
 .box{max-width:400px;margin:50px auto;background:#1c1c1c;padding:20px;border-radius:10px}
 input,button{width:100%;padding:10px;margin:5px 0}
-a{color:#ff6a00;cursor:pointer}
+a{color:#ff6a00;cursor:pointer;text-decoration:none}
 </style>
 </head>
-
 <body>
 
 <div class="box" id="loginBox">
@@ -30,45 +29,44 @@ a{color:#ff6a00;cursor:pointer}
 <input id="rt" placeholder="Telefon">
 <input id="rp" type="password" placeholder="Şifre">
 <button onclick="register()">Kayıt</button>
+<p><a onclick="showLogin()">Giriş Yap</a></p>
 </div>
 
 <div class="box" id="resetBox" style="display:none">
 <h2>Şifre Sıfırlama</h2>
-<input placeholder="E-posta">
-<button onclick="alert('Sıfırlama linki gönderildi (demo)')">Gönder</button>
+<input id="resetEmail" placeholder="E-posta">
+<button onclick="resetPassword()">Gönder</button>
+<p><a onclick="showLogin()">Giriş Yap</a></p>
 </div>
 
 <script>
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
-function showRegister(){
- loginBox.style.display="none";
- registerBox.style.display="block";
-}
-
-function showReset(){
- loginBox.style.display="none";
- resetBox.style.display="block";
-}
+function showRegister(){loginBox.style.display="none";registerBox.style.display="block";resetBox.style.display="none";}
+function showReset(){loginBox.style.display="none";registerBox.style.display="none";resetBox.style.display="block";}
+function showLogin(){loginBox.style.display="block";registerBox.style.display="none";resetBox.style.display="none";}
 
 function register(){
- users.push({
-  u:ru.value,
-  e:re.value,
-  t:rt.value,
-  p:rp.value
- });
+ let user={u:ru.value,e:re.value,t:rt.value,p:rp.value};
+ if(!user.u||!user.e||!user.t||!user.p){alert("Tüm alanları doldur");return;}
+ users.push(user);
  localStorage.setItem("users",JSON.stringify(users));
- alert("Kayıt başarılı (e-posta & telefon doğrulandı – demo)");
- location.reload();
+ alert("Kayıt başarılı (demo doğrulama)");
+ location.href="index.html";
 }
 
 function login(){
  let u=lu.value,p=lp.value;
  let user=users.find(x=>x.u===u && x.p===p);
- if(!user)return alert("Kullanıcı adı veya şifre yanlış");
+ if(!user){alert("Kullanıcı adı veya şifre yanlış");return;}
  localStorage.setItem("currentUser",u);
  location.href="index.html";
+}
+
+function resetPassword(){
+ let email=resetEmail.value;
+ if(users.find(x=>x.e===email)){alert("Şifre sıfırlama linki gönderildi (demo)");}
+ else{alert("E-posta bulunamadı");}
 }
 </script>
 

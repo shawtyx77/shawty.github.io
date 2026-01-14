@@ -1,167 +1,146 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>ShawtyStory | Hikayeni Satışa Dönüştür</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ShawtyStory ile hikayeni markaya dönüştür, satışlarını katla.">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<meta charset="UTF-8">
+<title>ShawtyStory | PUBG Hesap Satışı</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background: #0f0f0f;
-            color: #fff;
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, #ff0055, #ff7b00);
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            background: #000;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        section {
-            padding: 70px 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .box {
-            background: #1c1c1c;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .box h3 {
-            margin-bottom: 15px;
-            color: #ff7b00;
-        }
-
-        .about {
-            text-align: center;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .price {
-            background: linear-gradient(135deg, #ff7b00, #ff0055);
-            text-align: center;
-            border-radius: 20px;
-            padding: 50px 20px;
-        }
-
-        .price h2 {
-            font-size: 2.5rem;
-        }
-
-        .price span {
-            font-size: 3rem;
-            font-weight: bold;
-        }
-
-        footer {
-            background: #000;
-            text-align: center;
-            padding: 30px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-    </style>
+<style>
+body{margin:0;font-family:Arial;background:#0e0e0e;color:#fff}
+header{background:#ff6a00;padding:20px;text-align:center}
+button{padding:10px 20px;border:none;border-radius:5px;cursor:pointer}
+input,textarea{width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none}
+.section{padding:20px;max-width:1000px;margin:auto}
+.card{background:#1c1c1c;padding:15px;border-radius:10px;margin-bottom:15px}
+.hidden{display:none}
+img{width:100%;border-radius:10px}
+.admin{background:#300}
+</style>
 </head>
+
 <body>
 
-    <!-- HERO -->
-    <header>
-        <h1>ShawtyStory</h1>
-        <p>Hikayeni markaya dönüştür. Satışlarını, etkileşimini ve gücünü artır.</p>
-        <a href="#satin-al" class="btn">Hemen Başla</a>
-    </header>
+<header>
+<h1>🔥 ShawtyStory PUBG Hesap Satışı</h1>
+<p>Güvenli • Hızlı • Otomatik</p>
+</header>
 
-    <!-- ÖZELLİKLER -->
-    <section>
-        <div class="features">
-            <div class="box">
-                <h3>🚀 Hızlı Kurulum</h3>
-                <p>Hiçbir teknik bilgiye gerek yok. Dakikalar içinde hazır.</p>
-            </div>
-            <div class="box">
-                <h3>🔥 Satış Odaklı</h3>
-                <p>Dönüşüm artıran tasarım ve güçlü metinler.</p>
-            </div>
-            <div class="box">
-                <h3>📱 Mobil Uyumlu</h3>
-                <p>Tüm cihazlarda kusursuz görünüm.</p>
-            </div>
-        </div>
-    </section>
+<div class="section" id="auth">
+<h2>Giriş / Kayıt</h2>
+<input id="username" placeholder="Kullanıcı Adı">
+<input id="password" type="password" placeholder="Şifre">
+<button onclick="login()">Giriş Yap</button>
+<button onclick="register()">Kayıt Ol</button>
+</div>
 
-    <!-- HAKKINDA -->
-    <section>
-        <div class="about">
-            <h2>ShawtyStory Nedir?</h2>
-            <p>
-                ShawtyStory, markanı veya hikayeni profesyonel bir satış sistemine
-                dönüştüren modern bir çözümdür. Dijital dünyada fark yaratmak isteyenler
-                için tasarlandı.
-            </p>
-        </div>
-    </section>
+<div class="section hidden" id="userPanel">
+<h2>👤 Kullanıcı Paneli</h2>
+<button onclick="logout()">Çıkış Yap</button>
+<h3>🛒 Satıştaki PUBG Hesapları</h3>
+<div id="productList"></div>
+</div>
 
-    <!-- FİYAT -->
-    <section id="satin-al">
-        <div class="price">
-            <h2>Özel Lansman Fiyatı</h2>
-            <p><span>₺299</span></p>
-            <p>Tek Seferlik Ödeme – Ömür Boyu Kullanım</p>
-            <a href="#" class="btn">Satın Al</a>
-        </div>
-    </section>
+<div class="section hidden admin" id="adminPanel">
+<h2>🛠 Admin Panel</h2>
+<button onclick="logout()">Çıkış Yap</button>
+<input id="pTitle" placeholder="Hesap Başlığı">
+<input id="pPrice" placeholder="Fiyat (₺)">
+<input id="pImg" placeholder="Fotoğraf URL">
+<textarea id="pDesc" placeholder="Açıklama"></textarea>
+<button onclick="addProduct()">Hesap Ekle</button>
+<hr>
+<h3>Eklenen Hesaplar</h3>
+<div id="adminProducts"></div>
+</div>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2026 ShawtyStory | Tüm Hakları Saklıdır
-    </footer>
+<script>
+// ADMIN BİLGİSİ
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "admin123";
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let products = JSON.parse(localStorage.getItem("products")) || [];
+let currentUser = localStorage.getItem("currentUser");
+
+function save(){
+ localStorage.setItem("users",JSON.stringify(users));
+ localStorage.setItem("products",JSON.stringify(products));
+}
+
+function register(){
+ let u=username.value,p=password.value;
+ if(!u||!p)return alert("Boş bırakma");
+ users.push({u,p});
+ save();
+ alert("Kayıt başarılı");
+}
+
+function login(){
+ let u=username.value,p=password.value;
+ if(u===ADMIN_USER && p===ADMIN_PASS){
+  localStorage.setItem("currentUser","admin");
+  loadAdmin();
+  return;
+ }
+ let user=users.find(x=>x.u===u && x.p===p);
+ if(!user)return alert("Hatalı bilgi");
+ localStorage.setItem("currentUser",u);
+ loadUser();
+}
+
+function logout(){
+ localStorage.removeItem("currentUser");
+ location.reload();
+}
+
+function loadUser(){
+ auth.classList.add("hidden");
+ userPanel.classList.remove("hidden");
+ renderProducts();
+}
+
+function loadAdmin(){
+ auth.classList.add("hidden");
+ adminPanel.classList.remove("hidden");
+ renderAdminProducts();
+}
+
+function addProduct(){
+ let t=pTitle.value,pr=pPrice.value,i=pImg.value,d=pDesc.value;
+ if(!t||!pr||!i)return alert("Eksik alan");
+ products.push({t,pr,i,d});
+ save();
+ renderAdminProducts();
+}
+
+function renderProducts(){
+ productList.innerHTML="";
+ products.forEach(p=>{
+  productList.innerHTML+=`
+  <div class="card">
+   <img src="${p.i}">
+   <h3>${p.t}</h3>
+   <p>${p.d}</p>
+   <strong>${p.pr} ₺</strong><br><br>
+   <button onclick="alert('Satın alma talebi alındı')">Satın Al</button>
+  </div>`;
+ });
+}
+
+function renderAdminProducts(){
+ adminProducts.innerHTML="";
+ products.forEach((p,i)=>{
+  adminProducts.innerHTML+=`
+  <div class="card">
+   <strong>${p.t}</strong> - ${p.pr} ₺
+   <button onclick="products.splice(${i},1);save();renderAdminProducts()">Sil</button>
+  </div>`;
+ });
+}
+
+if(currentUser==="admin")loadAdmin();
+else if(currentUser)loadUser();
+</script>
 
 </body>
 </html>

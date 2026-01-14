@@ -2,70 +2,166 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <title>ShawtyStory | Hikayeni Satışa Dönüştür</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kıyafet Satışı</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="ShawtyStory ile hikayeni markaya dönüştür, satışlarını katla.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0f0f0f;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff0055, #ff7b00);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .box {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .box h3 {
+            margin-bottom: 15px;
+            color: #ff7b00;
+        }
+
+        .about {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .price {
+            background: linear-gradient(135deg, #ff7b00, #ff0055);
+            text-align: center;
+            border-radius: 20px;
+            padding: 50px 20px;
+        }
+
+        .price h2 {
+            font-size: 2.5rem;
+        }
+
+        .price span {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
-    <!-- Ana Sayfa Başlık -->
+
+    <!-- HERO -->
     <header>
-        <h1>Kıyafet Mağazası</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Ana Sayfa</a></li>
-                <li><a href="#">Ürünler</a></li>
-                <li><a href="#">İletişim</a></li>
-            </ul>
-        </nav>
+        <h1>ShawtyStory</h1>
+        <p>Hikayeni markaya dönüştür. Satışlarını, etkileşimini ve gücünü artır.</p>
+        <a href="#satin-al" class="btn">Hemen Başla</a>
     </header>
 
-    <!-- Kıyafet Listesi -->
-    <section class="product-list">
-        <h2>Ürünlerimiz</h2>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/200" alt="Tişört">
-            <h3>Tişört</h3>
-            <p>Rahat bir yaz tişörtü. %100 pamuk.</p>
-            <span class="price">₺99.99</span>
-            <button>Sepete Ekle</button>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/200" alt="Pantolon">
-            <h3>Pantolon</h3>
-            <p>Modern kesim, şık bir pantolon.</p>
-            <span class="price">₺199.99</span>
-            <button>Sepete Ekle</button>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/200" alt="Ceket">
-            <h3>Ceket</h3>
-            <p>Soğuk havalar için ideal bir ceket.</p>
-            <span class="price">₺299.99</span>
-            <button>Sepete Ekle</button>
+    <!-- ÖZELLİKLER -->
+    <section>
+        <div class="features">
+            <div class="box">
+                <h3>🚀 Hızlı Kurulum</h3>
+                <p>Hiçbir teknik bilgiye gerek yok. Dakikalar içinde hazır.</p>
+            </div>
+            <div class="box">
+                <h3>🔥 Satış Odaklı</h3>
+                <p>Dönüşüm artıran tasarım ve güçlü metinler.</p>
+            </div>
+            <div class="box">
+                <h3>📱 Mobil Uyumlu</h3>
+                <p>Tüm cihazlarda kusursuz görünüm.</p>
+            </div>
         </div>
     </section>
 
-    <!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap</title>
-</head>
-<body>
-    <!-- Giriş Yap Butonu -->
-    <button onclick="window.location.href='login.html';">Giriş Yap</button>
-</body>
-</html>
+    <!-- HAKKINDA -->
+    <section>
+        <div class="about">
+            <h2>ShawtyStory Nedir?</h2>
+            <p>
+                ShawtyStory, markanı veya hikayeni profesyonel bir satış sistemine
+                dönüştüren modern bir çözümdür. Dijital dünyada fark yaratmak isteyenler
+                için tasarlandı.
+            </p>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- FİYAT -->
+    <section id="satin-al">
+        <div class="price">
+            <h2>Özel Lansman Fiyatı</h2>
+            <p><span>₺299</span></p>
+            <p>Tek Seferlik Ödeme – Ömür Boyu Kullanım</p>
+            <a href="#" class="btn">Satın Al</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 Kıyafet Mağazası. Tüm hakları saklıdır.</p>
+        © 2026 ShawtyStory | Tüm Hakları Saklıdır
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>

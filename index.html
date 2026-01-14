@@ -2,31 +2,44 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShawtyStory | PUBG Hesap Satışı</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
 <style>
 body{margin:0;font-family:Arial;background:#0e0e0e;color:#fff}
-header{background:#ff6a00;padding:20px;text-align:center}
-a{color:#fff;text-decoration:none}
-.card{background:#1c1c1c;padding:15px;border-radius:10px;margin:15px}
-img{width:100%;border-radius:10px}
-button{padding:10px 20px;border:none;border-radius:5px}
+header{background:#ff6a00;padding:20px;text-align:center;display:flex;justify-content:space-between;align-items:center}
+header a{color:#fff;text-decoration:none;margin-left:15px}
+.container{max-width:1200px;margin:auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.card{background:#1c1c1c;padding:15px;border-radius:10px;text-align:center}
+.card img{width:100%;border-radius:10px}
+button{padding:10px 20px;border:none;border-radius:5px;cursor:pointer;background:#ff6a00;color:#fff}
+button:hover{background:#ff7b30}
 </style>
 </head>
-
 <body>
 
 <header>
 <h1>🔥 ShawtyStory PUBG Hesap Satışı</h1>
-<a href="login.html">👤 Giriş Yap</a>
+<div>
+<a href="login.html">Giriş Yap</a>
+<a href="login.html">Kayıt Ol</a>
+</div>
 </header>
 
-<div id="products"></div>
+<div class="container" id="products"></div>
 
 <script>
-let products = JSON.parse(localStorage.getItem("products")) || [];
+// Demo ürünler
+let products = JSON.parse(localStorage.getItem("products")) || [
+ {title:"PUBG Hesap 1", price:150, img:"https://via.placeholder.com/300x200", desc:"Gold Tier, silahlar açık"},
+ {title:"PUBG Hesap 2", price:200, img:"https://via.placeholder.com/300x200", desc:"Platinum Tier, tüm skinler"},
+ {title:"PUBG Hesap 3", price:250, img:"https://via.placeholder.com/300x200", desc:"Diamond Tier, premium hesap"}
+];
+
+localStorage.setItem("products",JSON.stringify(products));
+
 let html="";
-products.forEach(p=>{
+products.forEach((p,i)=>{
  html+=`
  <div class="card">
   <img src="${p.img}">
@@ -39,6 +52,4 @@ products.forEach(p=>{
 document.getElementById("products").innerHTML=html;
 </script>
 
-</body>
-</html>
-
+</

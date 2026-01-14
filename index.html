@@ -3,18 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>ShawtyStory | PUBG Hesap Satışı</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body{margin:0;font-family:Arial;background:#0e0e0e;color:#fff}
 header{background:#ff6a00;padding:20px;text-align:center}
-button{padding:10px 20px;border:none;border-radius:5px;cursor:pointer}
-input,textarea{width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none}
-.section{padding:20px;max-width:1000px;margin:auto}
-.card{background:#1c1c1c;padding:15px;border-radius:10px;margin-bottom:15px}
-.hidden{display:none}
+a{color:#fff;text-decoration:none}
+.card{background:#1c1c1c;padding:15px;border-radius:10px;margin:15px}
 img{width:100%;border-radius:10px}
-.admin{background:#300}
+button{padding:10px 20px;border:none;border-radius:5px}
 </style>
 </head>
 
@@ -22,125 +18,27 @@ img{width:100%;border-radius:10px}
 
 <header>
 <h1>🔥 ShawtyStory PUBG Hesap Satışı</h1>
-<p>Güvenli • Hızlı • Otomatik</p>
+<a href="login.html">👤 Giriş Yap</a>
 </header>
 
-<div class="section" id="auth">
-<h2>Giriş / Kayıt</h2>
-<input id="username" placeholder="Kullanıcı Adı">
-<input id="password" type="password" placeholder="Şifre">
-<button onclick="login()">Giriş Yap</button>
-<button onclick="register()">Kayıt Ol</button>
-</div>
-
-<div class="section hidden" id="userPanel">
-<h2>👤 Kullanıcı Paneli</h2>
-<button onclick="logout()">Çıkış Yap</button>
-<h3>🛒 Satıştaki PUBG Hesapları</h3>
-<div id="productList"></div>
-</div>
-
-<div class="section hidden admin" id="adminPanel">
-<h2>🛠 Admin Panel</h2>
-<button onclick="logout()">Çıkış Yap</button>
-<input id="pTitle" placeholder="Hesap Başlığı">
-<input id="pPrice" placeholder="Fiyat (₺)">
-<input id="pImg" placeholder="Fotoğraf URL">
-<textarea id="pDesc" placeholder="Açıklama"></textarea>
-<button onclick="addProduct()">Hesap Ekle</button>
-<hr>
-<h3>Eklenen Hesaplar</h3>
-<div id="adminProducts"></div>
-</div>
+<div id="products"></div>
 
 <script>
-// ADMIN BİLGİSİ
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "admin123";
-
-let users = JSON.parse(localStorage.getItem("users")) || [];
 let products = JSON.parse(localStorage.getItem("products")) || [];
-let currentUser = localStorage.getItem("currentUser");
-
-function save(){
- localStorage.setItem("users",JSON.stringify(users));
- localStorage.setItem("products",JSON.stringify(products));
-}
-
-function register(){
- let u=username.value,p=password.value;
- if(!u||!p)return alert("Boş bırakma");
- users.push({u,p});
- save();
- alert("Kayıt başarılı");
-}
-
-function login(){
- let u=username.value,p=password.value;
- if(u===ADMIN_USER && p===ADMIN_PASS){
-  localStorage.setItem("currentUser","admin");
-  loadAdmin();
-  return;
- }
- let user=users.find(x=>x.u===u && x.p===p);
- if(!user)return alert("Hatalı bilgi");
- localStorage.setItem("currentUser",u);
- loadUser();
-}
-
-function logout(){
- localStorage.removeItem("currentUser");
- location.reload();
-}
-
-function loadUser(){
- auth.classList.add("hidden");
- userPanel.classList.remove("hidden");
- renderProducts();
-}
-
-function loadAdmin(){
- auth.classList.add("hidden");
- adminPanel.classList.remove("hidden");
- renderAdminProducts();
-}
-
-function addProduct(){
- let t=pTitle.value,pr=pPrice.value,i=pImg.value,d=pDesc.value;
- if(!t||!pr||!i)return alert("Eksik alan");
- products.push({t,pr,i,d});
- save();
- renderAdminProducts();
-}
-
-function renderProducts(){
- productList.innerHTML="";
- products.forEach(p=>{
-  productList.innerHTML+=`
-  <div class="card">
-   <img src="${p.i}">
-   <h3>${p.t}</h3>
-   <p>${p.d}</p>
-   <strong>${p.pr} ₺</strong><br><br>
-   <button onclick="alert('Satın alma talebi alındı')">Satın Al</button>
-  </div>`;
- });
-}
-
-function renderAdminProducts(){
- adminProducts.innerHTML="";
- products.forEach((p,i)=>{
-  adminProducts.innerHTML+=`
-  <div class="card">
-   <strong>${p.t}</strong> - ${p.pr} ₺
-   <button onclick="products.splice(${i},1);save();renderAdminProducts()">Sil</button>
-  </div>`;
- });
-}
-
-if(currentUser==="admin")loadAdmin();
-else if(currentUser)loadUser();
+let html="";
+products.forEach(p=>{
+ html+=`
+ <div class="card">
+  <img src="${p.img}">
+  <h3>${p.title}</h3>
+  <p>${p.desc}</p>
+  <strong>${p.price} ₺</strong><br><br>
+  <button onclick="alert('Satın almak için giriş yapmalısın')">Satın Al</button>
+ </div>`;
+});
+document.getElementById("products").innerHTML=html;
 </script>
 
 </body>
 </html>
+

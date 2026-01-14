@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<style>
+body{background:#000;color:#fff;font-family:Arial}
+</style>
+</head>
+
+<body>
+
+<h2>📋 Kayıtlı Kullanıcılar</h2>
+<div id="list"></div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let html="";
+users.forEach(u=>{
+ html+=`<p>${u.u} | ${u.e} | ${u.t}</p>`;
+});
+document.getElementById("list").innerHTML=html;
+</script>
+
+</body>
+</html>

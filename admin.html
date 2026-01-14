@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel | ShawtyStory</title>
+<style>
+body{background:#000;color:#fff;font-family:Arial;padding:20px}
+input,button{padding:10px;margin:5px;width:100%}
+.card{background:#1c1c1c;padding:10px;margin:10px;border-radius:10px}
+</style>
+</head>
+<body>
+
+<h2>📋 Kayıtlı Kullanıcılar</h2>
+<div id="userList"></div>
+
+<h2>🛒 Hesap Ekle</h2>
+<input id="pTitle" placeholder="Hesap Başlığı">
+<input id="pPrice" placeholder="Fiyat (₺)">
+<input id="pImg" placeholder="Fotoğraf URL">
+<input id="pDesc" placeholder="Açıklama">
+<button onclick="addProduct()">Ekle</button>
+
+<div id="productList"></div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+function renderUsers(){
+ let html="";
+ users.forEach(u=>{html+=`<p>${u.u} | ${u.e} | ${u.t}</p>`;});
+ document.getElementById("userList").innerHTML=html;
+}
+renderUsers();
+
+function addProduct(){
+ let t=document.getElementById("pTitle").value,
+     pr=document.getElementById("pPrice").value,
+     i=document.getElementById("pImg").value,
+     d=document.getElementById("pDesc").value;
+ if(!t||!pr||!i||!d){alert("Tüm alanları doldur");return;}
+ products.push({title:t,price:pr,img:i,desc:d});
+ localStorage.setItem("products",JSON.stringify(products));
+ renderProducts();
+}
+
+function renderProducts(){
+ let html="";
+ products.forEach(p=>{
+  html+=`<div class="card"><strong>${p.title}</strong> - ${p.price} ₺</div>`;
+ });
+ document.getElementById("productList").innerHTML=html;
+}
+renderProducts();
+</script>
+
+</body>
+</html>
